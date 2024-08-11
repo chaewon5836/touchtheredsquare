@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const targets = [document.getElementById('blueTarget'), document.getElementById('yellowTarget'),
                      document.getElementById('greenTarget'), document.getElementById('purpleTarget'),
                      document.getElementById('pinkTarget'), document.getElementById('orangeTarget'),
-                     document.getElementById('blackTarget'), document.getElementById('limeTarget')];
+                     document.getElementById('limeTarget'), document.getElementById('blackTarget')];
     const redTarget = document.getElementById('target');
     const scoreDisplay = document.getElementById('score');
     const gameOverText = document.getElementById('gameOver');
