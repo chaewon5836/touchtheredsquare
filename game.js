@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const scoreDisplay = document.getElementById('score');
     const gameOverText = document.getElementById('gameOver');
     let score = 0;
-    let isGameOver = false; // 게임 오버 상태를 추적하는 변수
-    let activeTargets = 0; // 현재 활성화된 타겟의 수
+    let isGameOver = false;
+    let activeTargets = 0;
 
     function moveTarget(target) {
         const gameArea = document.getElementById('gameArea');
@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     redTarget.addEventListener('click', () => {
-        if (isGameOver) return; // 게임 오버 상태에서는 클릭을 무시
+        if (isGameOver) return;
 
         score++;
         scoreDisplay.textContent = score;
         moveTarget(redTarget);
 
-        if (score >= 100 * (activeTargets + 1) && activeTargets < targets.length) {
+        if (score >= 50 * (activeTargets + 1) && activeTargets < targets.length) {
             targets[activeTargets].style.display = 'block';
             moveTarget(targets[activeTargets]);
             targets[activeTargets].addEventListener('click', () => endGame());
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     function endGame() {
-        isGameOver = true; // 게임 오버 상태로 전환
+        isGameOver = true;
         gameOverText.style.display = 'block';
         redTarget.style.display = 'none';
         targets.forEach(target => target.style.display = 'none');
