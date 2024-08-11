@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const scoreDisplay = document.getElementById('score');
     const gameOverText = document.getElementById('gameOver');
     let score = 0;
-    let isGameOver = false;
-    let activeTargets = 0;
+    let isGameOver = false; 
+    let activeTargets = 0; 
 
     function moveTarget(target) {
         const gameArea = document.getElementById('gameArea');
@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     redTarget.addEventListener('click', () => {
-        if (isGameOver) return;
+        if (isGameOver) return; 
 
         score++;
         scoreDisplay.textContent = score;
         moveTarget(redTarget);
 
-        if (score >= 100 * (activeTargets + 1) && activeTargets < targets.length) {
+        if (score >= 50 * (activeTargets + 1) && activeTargets < targets.length) {
             const newTarget = targets[activeTargets];
             newTarget.style.display = 'block';
             moveTarget(newTarget);
@@ -55,9 +55,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     targets.forEach(target => {
-        moveTarget(target); 
+        moveTarget(target);  
         target.addEventListener('click', () => {
-            if (!isGameOver) moveTarget(target); 
+            if (!isGameOver) moveTarget(target);  
         });
     });
 
