@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빨간 네모를 누르세요!</title>
+    <style>
+        #gameArea {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: relative;
+            margin: 20px auto;
+        }
+        .target {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            display: none; 
+        }
+        #blueTarget { background-color: blue; }
+        #yellowTarget { background-color: yellow; }
+        #greenTarget { background-color: green; }
+        #purpleTarget { background-color: purple; }
+        #pinkTarget { background-color: pink; }
+        #orangeTarget { background-color: orange; }
+        #blackTarget { background-color: black; }
+        #limeTarget { background-color: lime; }
+
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>빨간 네모를 누르세요!</h1>
+    <div id="gameArea">
+        <div id="target" class="target" style="display: block; background-color: red;"></div>
+        <div id="blueTarget" class="target"></div>
+        <div id="yellowTarget" class="target"></div>
+        <div id="greenTarget" class="target"></div>
+        <div id="purpleTarget" class="target"></div>
+        <div id="pinkTarget" class="target"></div>
+        <div id="orangeTarget" class="target"></div>
+        <div id="blackTarget" class="target"></div>
+        <div id="limeTarget" class="target"></div>
+        <div id="gameOver">게임 오버</div>
+    </div>
+    <p>점수: <span id="score">0</span></p>
+    <script src="game.js"></script>
+</body>
+</html>
