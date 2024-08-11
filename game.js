@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const scoreDisplay = document.getElementById('score');
     const gameOverText = document.getElementById('gameOver');
     let score = 0;
-    let isGameOver = false;
+    let isGameOver = false; 
     let activeTargets = 0;
 
     function moveTarget(target) {
@@ -38,35 +38,32 @@ document.addEventListener('DOMContentLoaded', (event) => {
                  newRect.top > targetRect.bottom);
     }
 
-    redTarget.addEventListener('click', () => {
-        if (isGameOver) return; 
-
-        score++;
-        scoreDisplay.textContent = score;
-        moveTarget(redTarget);
-
+    function activateNextTarget() {
         if (score >= 50 * (activeTargets + 1) && activeTargets < targets.length) {
             const newTarget = targets[activeTargets];
             newTarget.style.display = 'block';
             moveTarget(newTarget);
-            newTarget.addEventListener('click', () => endGame());
             activeTargets++;
         }
-    });
+    }
 
-    targets.forEach(target => {
-        moveTarget(target); 
-        target.addEventListener('click', () => {
-            if (!isGameOver) moveTarget(target);  
-        });
+    redTarget.addEventListener('click', () => {
+        if (isGameOver) return;
+
+        score++;
+        scoreDisplay.textContent = score;
+        moveTarget(redTarget); 
+        targets.slice(0, activeTargets).forEach(target => moveTarget(target));
+        
+        activateNextTarget(); 
     });
 
     function endGame() {
-        isGameOver = true; 
+        isGameOver = true; // 게임 오버 상태로 전환
         gameOverText.style.display = 'block';
         redTarget.style.display = 'none';
         targets.forEach(target => target.style.display = 'none');
     }
 
-    moveTarget(redTarget); 
+    moveTarget(redTarget);  
 });
