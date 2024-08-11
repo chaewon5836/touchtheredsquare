@@ -45,20 +45,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
         scoreDisplay.textContent = score;
         moveTarget(redTarget);
 
-        if (score >= 50 * (activeTargets + 1) && activeTargets < targets.length) {
-            targets[activeTargets].style.display = 'block';
-            moveTarget(targets[activeTargets]);
-            targets[activeTargets].addEventListener('click', () => endGame());
+        if (score >= 100 * (activeTargets + 1) && activeTargets < targets.length) {
+            const newTarget = targets[activeTargets];
+            newTarget.style.display = 'block';
+            moveTarget(newTarget);
+            newTarget.addEventListener('click', () => endGame());
             activeTargets++;
         }
     });
 
+    targets.forEach(target => {
+        moveTarget(target); 
+        target.addEventListener('click', () => {
+            if (!isGameOver) moveTarget(target); 
+        });
+    });
+
     function endGame() {
-        isGameOver = true;
+        isGameOver = true; 
         gameOverText.style.display = 'block';
         redTarget.style.display = 'none';
         targets.forEach(target => target.style.display = 'none');
     }
 
-    moveTarget(redTarget);
+    moveTarget(redTarget);  
 });
