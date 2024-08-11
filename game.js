@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const scoreDisplay = document.getElementById('score');
     const gameOverText = document.getElementById('gameOver');
     let score = 0;
-    let isGameOver = false; 
-    let activeTargets = 0; 
+    let isGameOver = false;
+    let activeTargets = 0;
 
     function moveTarget(target) {
         const gameArea = document.getElementById('gameArea');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     targets.forEach(target => {
-        moveTarget(target);  
+        moveTarget(target); 
         target.addEventListener('click', () => {
             if (!isGameOver) moveTarget(target);  
         });
@@ -68,5 +68,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         targets.forEach(target => target.style.display = 'none');
     }
 
-    moveTarget(redTarget);  
+    moveTarget(redTarget); 
 });
